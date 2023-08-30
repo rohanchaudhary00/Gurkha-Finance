@@ -5,6 +5,9 @@
 
 <script>
 export default {
-    name: 'IndexPage'
+    name: 'IndexPage',
+    mounted() {
+        this.$router.push({path: '/home'})
+    }
 }
 </script>

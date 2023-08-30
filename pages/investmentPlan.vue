@@ -38,15 +38,15 @@
                         </v-select>
 
                         <span>Predicted Return Per Year:</span>
-                        <v-select v-model="perYearReturn" outlined dense class="mb-n3" :items="returns" item-text="title" item-value="title" :rules="[validRules.required]" type="number" placeholder="Select Predicted Return Per Year">
+                        <v-select v-model="perYearReturn" outlined dense class="mb-n3" :items="returns" item-text="title" item-value="title" :disabled="disabledReturn" :rules="[validRules.required]" type="number" placeholder="Select Predicted Return Per Year">
                         </v-select>
 
                         <span>Over all tax:</span>
-                        <v-select v-model="tax" outlined dense class="mb-n3" :items="taxs" item-text="title" item-value="title" :rules="[validRules.required]" type="number" placeholder="Select Over all tax">
+                        <v-select v-model="tax" outlined dense class="mb-n3" :items="taxs" item-text="title" item-value="title" :disabled="disabledTax" :rules="[validRules.required]" type="number" placeholder="Select Over all tax">
                         </v-select>
 
                         <span>RBXS Fee Per Month:</span>
-                        <v-select v-model="rbxs" outlined dense class="mb-n3" :items="rbxsFees" item-text="title" item-value="title" :rules="[validRules.required]" type="number" placeholder="Select Fee Per Month">
+                        <v-select v-model="rbxs" outlined dense class="mb-n3" :items="rbxsFees" item-text="title" item-value="title" :disabled="disabledRbxs" :rules="[validRules.required]" type="number" placeholder="Select Fee Per Month">
                         </v-select>
                     </v-form>
                 </v-card-text>
@@ -67,6 +67,9 @@ export default {
     data: () => ({
         valid: true,
         loading: false,
+        disabledReturn: false,
+        disabledTax: false,
+        disabledRbxs: false,
 
         types: [
             { id: "1", title: "Basic Savings Plan" },
@@ -93,8 +96,6 @@ export default {
             { id: "2", title: "0.3%" },
             { id: "3", title: "1.3%" },
         ],
-        from: ["USD", "EUR", "GBP"],
-        to: ["EUR", "USD", "GBP"],
 
         type: null,
         amount: null,
@@ -112,6 +113,28 @@ export default {
             required: (value) => !!value || "Required.",
         },
     }),
+    watch: {
+        type(newVal) {
+            if (newVal) {
+                if (newVal === "Basic Savings Plan") {
+                    this.perYearReturn = this.returns[0].title;
+                    this.tax = this.taxs[0].title;
+                    this.rbxs = this.rbxsFees[0].title;
+                } else if (newVal === "Savings Plan Plus") {
+                    this.perYearReturn = this.returns[1].title;
+                    this.tax = this.taxs[1].title;
+                    this.rbxs = this.rbxsFees[1].title;
+                } else if (newVal === "Managed Stock Investments") {
+                    this.perYearReturn = this.returns[2].title;
+                    this.tax = this.taxs[2].title;
+                    this.rbxs = this.rbxsFees[2].title;
+                }
+                this.disabledReturn = true;
+                this.disabledTax = true;
+                this.disabledRbxs = true;
+            }
+        },
+    },
     methods: {
         reset() {
             this.$refs.form.reset();
