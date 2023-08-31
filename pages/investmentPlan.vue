@@ -20,7 +20,7 @@
                 <h4 class="mt-3">5. Click on clear to remove all result.</h4>
             </v-card>
 
-            <v-card class="mt-5">
+            <v-card v-if="predictedReturns !== null" class="mt-5">
                 <v-row>
                     <v-col align="center">
                         <p v-if="predictedReturns !== null" class="mt-5"> <span>Predicted Returns: </span><span><b>{{ predictedReturns }}</b></span></p>
