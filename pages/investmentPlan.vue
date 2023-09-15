@@ -31,7 +31,7 @@
                 </v-row>
             </v-card>
         </v-col>
-        <v-col align="cente">
+        <v-col cols="5" align="cente">
             <v-card class="mt-5 pb-5" width="600" elevation="5">
                 <v-card-title>Investment Plan Yearly Calculator</v-card-title>
                 <v-card-text>

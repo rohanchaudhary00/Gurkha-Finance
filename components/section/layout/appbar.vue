@@ -11,11 +11,11 @@
         <span class="menu-hover mx-2 link" :class="activeAbout()" @click="$router.push({path: '/about'})">About</span>
 
         <p class="text-right mt-4 ml-10">
-            <span class="mx-2">Pashupati Chaudhary</span> <br>
+            <span class="mx-2">Rohan Chaudhary</span> <br>
             <span class="mx-2">Admin</span>
         </p>
         <v-avatar class="profile-avatar link" size="60" @click="login = true">
-            <v-icon>mdi-account</v-icon>
+        <v-img contain src="https://scontent.fktm16-1.fna.fbcdn.net/v/t39.30808-6/283905314_128176096525413_5124597618047793820_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=05bb41&_nc_ohc=iMky_R2FKvUAX_wn9TA&_nc_ht=scontent.fktm16-1.fna&oh=00_AfCHVeVTkqCR0RPkgB2x0okT-nlvcmryCmztPPIRq3nrCg&oe=650830A8"></v-img>
         </v-avatar>
     </v-app-bar>
     <v-dialog v-model="login" max-width="400">
@@ -110,8 +110,8 @@ export default {
 .menu-active {
     padding: 5px 15px;
     border-radius: 4px;
-    border: 1px solid grey;
-    background-color: #3bac76 !important;
+    border: 1px solid white;
+    background-color: #2196F3 !important;
     color: white !important;
     transition: 0.5s;
 }
@@ -119,8 +119,8 @@ export default {
 .menu-hover:hover {
     padding: 5px 15px;
     border-radius: 4px;
-    border: 1px solid grey;
-    background-color: #58b889 !important;
+    border: 1px solid white;
+    background-color: #2196F3 !important;
     color: white !important;
     transition: 0.5s;
 }
